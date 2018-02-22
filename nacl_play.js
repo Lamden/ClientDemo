@@ -43,6 +43,8 @@ function sendCoin() {
   var tx = {'payload': payload, 'metadata': metadata};
 
   console.log("tx: " + JSON.stringify(tx))
+
+  setStatusDiv();
 }
 
 function loadWallet() {
@@ -95,4 +97,8 @@ function hexStringToByte(str) {
   }
 
   return new Uint8Array(a);
+}
+
+function setStatusDiv() {
+  $("#send_result").text("Transaction Sent!");
 }
