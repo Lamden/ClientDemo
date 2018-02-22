@@ -32,17 +32,22 @@ function sendCoin() {
   // payload['amount'] = $("input[name='amount']").val();
   // payload['from'] = $("input[name='verifying_key']").val();
   // payload['to'] = $("input[name='recipient']").val();
-  payload['amount'] = "10"
+  payload['type'] = "t";
   payload['from'] = STU[1];
   payload['to'] = DAVIS[1];
-  payload['type'] = "t";
+  payload['amount'] = "10";
 
   metadata['signature'] = get_signature(payload);
   metadata['proof'] = get_pow(payload);
 
   var tx = {'payload': payload, 'metadata': metadata};
 
-  console.log("tx: " + JSON.stringify(tx))
+  console.log("tx: " + JSON.stringify(tx));
+
+  formatted_payload = turnPayloadToList(tx);
+
+  var tx_formatted = {'payload': formatted_payload, 'metadata': metadata};
+  console.log("tx formatted: " + JSON.stringify(tx_formatted));
 
   setStatusDiv();
 }
@@ -102,3 +107,10 @@ function hexStringToByte(str) {
 function setStatusDiv() {
   $("#send_result").text("Transaction Sent!");
 }
+
+function turnPayloadToList(tx) {
+  var payload_list = $.map(tx['payload'], function(value, index) {
+    return [value];
+  })
+  return payload_list
+};
