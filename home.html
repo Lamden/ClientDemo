@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="nacl.min.js"></script>
+  <script src="nacl-util.min.js"></script>
+  <script src="nacl_play.js"></script>
+  <link href="styles.css" rel="stylesheet">
+
+<script>
+  $(function() {
+    console.log("Jquery loaded.")
+    $("#wallet_button").bind("click", generateWallet);
+  });
+</script>
+
+</head>
+
+<body>
+
+<div id="wallet_div" style="font-size: 18px;">Wallet Not Loaded</div>
+
+<br><br><br>
+
+<h3> New Wallet </h3>
+
+<button id="wallet_button" type="button">Generate New Wallet</button>
+
+<br><br>
+
+<h3> Load Wallet </h3>
+
+<form>
+  Wallet Signing Key: <input type="text" name="signing_key">
+  <input type="button" onclick="loadWallet()" value="Load">
+</form>
+
+<br><br>
+
+<h3> Send Coin </h3>
+  <form>
+    Recipient Wallet: <input type="text" name="recipient"><br>
+    Amount: <input type="text" name="amount"><br><br>
+    <input type="button" onclick="sendCoin()" value="Send">
+  </form>
+<br>
+
+<div id="send_result">Status of send request here</div>
+
+</body>
+
+</html>
