@@ -46,7 +46,7 @@ function sendCoin() {
 
   formatted_payload = turnPayloadToList(tx);
 
-  var tx_formatted = {'payload': formatted_payload, 'metadata': metadata};
+  var tx_formatted = {'metadata': metadata, 'payload': formatted_payload};
   console.log("tx formatted: " + JSON.stringify(tx_formatted));
 
   setStatusDiv();
