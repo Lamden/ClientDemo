@@ -46,8 +46,17 @@ function sendCoin() {
 
   formatted_payload = turnPayloadToList(tx);
 
-  var tx_formatted = {'metadata': metadata, 'payload': formatted_payload};
-  console.log("tx formatted: " + JSON.stringify(tx_formatted));
+  var tx_formatted = JSON.stringify({'metadata': metadata, 'payload': formatted_payload});
+  console.log("tx formatted: " + tx_formatted);
+
+  //POST
+  $.ajax({
+    type : 'POST',
+    data : tx_formatted,
+    url : "http://127.0.0.1:8080/",
+    contentType : 'application/json',
+
+  });
 
   setStatusDiv();
 }
